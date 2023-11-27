@@ -1,4 +1,4 @@
-import random 
+from random import randint 
 import math
 import time
 xp = 100
@@ -24,7 +24,7 @@ while xp > 0:
     print("Количество xp:", xp)
     print()
     print('''Вы находитесь в лабаратории. Чтобы открыть первую дверь 
-          решите пример и введите пин код(ответ на вопрос). Сколько будет 2 в степени 9?''')
+         решите пример и введите пин код(ответ на вопрос). Сколько будет 2 в степени 9?''')
     if xp <= 0:
         break
     answer_1 = int(input())
@@ -34,7 +34,6 @@ while xp > 0:
         xp -= 25
     print()
     print("Количество xp:", xp)
-    print()
     print('''Перед вами 2 дверь. Открыть ее будет сложнее, чем придыдущую''')
     print()
     print('Вычислите устно: 448 + 7 * 4')
@@ -43,11 +42,11 @@ while xp > 0:
     answer_2 = int(input())
     if answer_2 == 476:
        xp += 15
-       print('Железная массивная дверь со срипом открылась.')
+       print('Железная массивная дверь со скрипом открылась.')
     else:
         xp -= 40
         print('''Дверь открыта, но вы потеряли 40 xp. 
-              Надо не оштбаься в следующих вопросах.''')
+              Надо не ошибаться в следующих вопросах.''')
     print()
     print("Количество xp:", xp)
     print()
@@ -102,7 +101,7 @@ while xp > 0:
     print()
     print('Количество xp:', xp)
     print()
-    random_nums = random(1, 2, 3)
+    random_nums = randint(2, 3)
     for i in range(random_nums):
         print('Найдите факториал 7')
         factorial1 = int(input())
@@ -110,7 +109,7 @@ while xp > 0:
             print("Да да да! Верно!!!")
             break
         else:
-            print('еще', random_nums - 1, 'попытка')
+            print('еще', random_nums - 1, 'попытки')
         
     if factorial1 != 5040:
         xp -= 1000
