@@ -1,4 +1,5 @@
 from random import randint 
+import re
 import math
 import time
 xp = 100
@@ -17,59 +18,71 @@ while xp > 0:
     surname = input('Введите фамилию' )
     city = input('Введите город, в котором вы живете' )
     school = input('Введите номер школы' )
-    class_number = int(input('Введите номер класса обучения' ))
+    class_number = input('Введите номер класса обучения' )
 
     print('Перед каждой дверью будет вопрос по математике. Вопросов будет 7 вопросов, приступим.')
     print()
     print("Количество xp:", xp)
     print()
-    print('''Вы находитесь в лабаратории. Чтобы открыть первую дверь 
-         решите пример и введите пин код(ответ на вопрос). Сколько будет 2 в степени 9?''')
+    print('''Вы находитесь в лаборатории. Чтобы открыть первую дверь /n решите пример и введите пин код(ответ на вопрос). Сколько будет 2 в степени 9?''')
     if xp <= 0:
         break
-    answer_1 = int(input())
-    if answer_1 == 512:
-        xp += 10
+    answer_1 = input()
+    if answer_1.isdigit():
+        if answer_1 == '512':
+            xp += 10
+        else:
+            xp -= 25    
     else:
         xp -= 25
+        print("Неверный формат ответа")
+    
     print()
     print("Количество xp:", xp)
     print('''Перед вами 2 дверь. Открыть ее будет сложнее, чем придыдущую''')
     print()
     print('Вычислите устно: 448 + 7 * 4')
+    answer_2 = input()
     if xp <= 0:
         break
-    answer_2 = int(input())
-    if answer_2 == 476:
-       xp += 15
-       print('Железная массивная дверь со скрипом открылась.')
+    if answer_2.isdigit():
+        if answer_2 == '476':
+            xp += 15
+            print('Железная массивная дверь со скрипом открылась.')
+        else:
+            xp -= 40
+            print('''Дверь открыта, но вы потеряли 40 xp. 
+                Надо не ошибаться в следующих вопросах.''')
     else:
         xp -= 40
-        print('''Дверь открыта, но вы потеряли 40 xp. 
-              Надо не ошибаться в следующих вопросах.''')
+        print('''Неверный формат данных''')
     print()
     print("Количество xp:", xp)
     print()
     print('Найдите значение x: (3x + 75) / 5 = (6x + 42) / 5 Введите числа на 1 строке')
     if xp <= 0:
         break
-    answer_3 = map(int, input().split())
-    for i in answer_3:
-        if i == 11:
+    answer_3 = input()
+    if answer_3.isdigit():
+        if answer_3 == '11':
             xp += 20
         else:
             xp -= 15
+    else:
+        xp -= 15
+        print('''Неверный формат данных''')
     print()
     print("Количество xp:", xp)
     print()
     print('Округлите число 8.1414571 до десятитысечных')
     if xp <= 0:
         break
-    answer_4 = float(input())
-    if answer_4 == 8.1415:
+    answer_4 = input()
+    if answer_4 == '8.1415' or answer_4 == '8,1415':
         xp += 10
     else:
-        xp -= 40
+        xp -= 20
+        print('''Неверный формат данных''')
     print()
     print("Количество xp:", xp)
     print()
@@ -77,23 +90,30 @@ while xp > 0:
           Чему равна собственная скорость катера, если скорость течения 4 км/ч?''')
     if xp <= 0:
         break
-    answer_5 = int(input())
-    if answer_5 == 24:
-        xp += 35
+    answer_5 = input()
+    if answer_5.isdigit():
+        if answer_5 == '24':
+           xp += 35
+        else:
+             xp -= 40
     else:
         xp -= 40
+        print('''Неверный формат данных''')
     print()
     print("Количество xp:", xp)
     print()
     print("Найдите корень 49")
     if xp <= 0:
         break
-    answer_6 = int(input())
-    if answer_6 == 7:
-        xp += 5
+    answer_6 = input()
+    if answer_6.isdigit():
+        if answer_6 == '7':
+           xp += 5
+        else:
+           xp -= 10
     else:
-        xp -= 10
-    
+         xp -= 10
+         print('''Неверный формат данных''')
     print()
     print('''Вы находитесь пред выходом из здания, уже слышен щебет птиц и в помещние проникают
           солнечные лучи. Но вот досада: надо найти факториал чисел, чтобы выбраться из 
@@ -104,14 +124,18 @@ while xp > 0:
     random_nums = randint(2, 3)
     for i in range(random_nums):
         print('Найдите факториал 7')
-        factorial1 = int(input())
-        if factorial1 == 5040:
-            print("Да да да! Верно!!!")
-            break
+        factorial1 = input()
+        if factorial1.isdigit():
+            if factorial1 == '5040':
+                print("Да да да! Верно!!!")
+                break
+            else:
+                print('еще', random_nums - 1, 'попытки')
         else:
-            print('еще', random_nums - 1, 'попытки')
+           xp -= 1000
+           print('''Неверный формат данных''')
         
-    if factorial1 != 5040:
+    if factorial1 != '5040':
         xp -= 1000
     break
     
@@ -121,4 +145,4 @@ if xp > 0:
          surname, name, 'ученик школы', school, 'города', city, class_number, 
          "класса смог сохранить xp на уровне > 0. Двери разблокированы")  
 else:
-    print("система не может разблокироватьдвери, т к вы не человек. Вы проиграли")
+    print("Система не может разблокироватьдвери, т к вы не человек. Вы проиграли")
