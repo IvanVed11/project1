@@ -95,7 +95,7 @@ while xp > 0:
         break
     answer_5 = input()
     if answer_5.isdigit():
-        if answer_5 == '24':
+        if answer_5 == '8':
            xp += 35
         else:
              xp -= 40
